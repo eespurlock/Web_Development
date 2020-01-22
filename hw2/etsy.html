@@ -3,16 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Etsy</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="etsy.css">
+    <link rel="stylesheet" type="text/css" href="etsy.css">
   </head>
   <body>
   	<header>
-  		<p>Esty</p>
-  		<p>Search for items or shops</p>
-  		<p>Search icon</p>
-  		<p>Sign in</p>
-  		<p>Shopping cart icon</p>
+  		<div id="top">
+	  		<p id=name>Esty</p>
+	  		<p>Search for items or shops</p>
+	  		<p>Search icon</p>
+	  		<p>Sign in</p>
+	  		<p>Shopping cart icon</p>
+	  	</div>
   		<nav>
 	  		<ul>
 	  			<li>Jewelry & Accessories </li>
@@ -23,41 +24,52 @@
 	  			<li>Art & Collectibles</li>
 	  			<li>Craft Supplies</li>
 	  			<li>Vintage</li>
-	  			<li> Gift icon</li>
-	  			<li>Gifts</li>
+	  			<li>Gift icon Gifts</li>
 	  		</ul>
 	  	</nav>
   	</header>
-    <p>If it's handcrafted, vintage, custom, or unique, it's on Etsy.</p>
-    <div id="pictures">
-    	<article>
+    <p id="title">If it's handcrafted, vintage, custom, or unique, it's on Etsy.</p>
+    <div>
+    	<article class="rose" id="left_col">
     		<p>Shower your little ones with love.</p>
     		<p>Shop Valentine's Day > </p>
     	</article>
-    	<article>
+    	<article id="center_col">
     		<img src="etsy2.jpg">
     	</article>
-    	<article>
+    	<article id="right_col">
     		<img src="etsy3.jpg">
     		<p>Congrats to the couple!</p>
     		<p>Shop engagement gifts > </p>
-    		<p>Ships for free? Yes! > </p>
+    		<p class=rose>Ships for free? Yes! > </p>
     	</article>
     </div>
     <div id="words">
     	<article>
-    		<p>Orange check mark</p>
-    		<p>Unique everything>
+    		<span data-content-toggle-icon>
+	    		<svg xmlns="http://www/w3/org/200/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false">
+	    			<path d="M9.057,20.471L2.293,13.707a1,1,0,0,1,1.414-1.414l5.236,5.236,11.3-13.18a1,1,0,1,1,1.518,1.3Z"></path>
+	    		</svg>
+	    	</span>
+	    	<span>Unique everything</span>
     		<p>We have millions of one-of-a-kind items, so you can find whatever you need (or really, really want).</p>
     	</article>
     	<article>
-    		<p>Orange check mark</p>
-    		<p>Independent sellers</p>
-    		<p>Buy directly from someone who put their heart and soul into making something special.</p>
+	    	<span data-content-toggle-icon>
+	    		<svg xmlns="http://www/w3/org/200/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false">
+	    			<path d="M9.057,20.471L2.293,13.707a1,1,0,0,1,1.414-1.414l5.236,5.236,11.3-13.18a1,1,0,1,1,1.518,1.3Z"></path>
+	    		</svg>
+	    	</span>
+	    	<span>Independent sellers</span>
+	    	<p>Buy directly from someone who put their heart and soul into making something special.</p>
     	</article>
     	<article>
-    		<p>Orange check mark</p>
-    		<p>Secure shopping</p>
+    		<span id="check">
+	    		<svg xmlns="http://www/w3/org/200/svg" viewbox="0 0 24 24" aria-hidden="true" focusable="false">
+	    			<path d="M9.057,20.471L2.293,13.707a1,1,0,0,1,1.414-1.414l5.236,5.236,11.3-13.18a1,1,0,1,1,1.518,1.3Z"></path>
+	    		</svg>
+	    	</span>
+	    	<span>Secure shopping</span>
     		<p>We use best-in-class technology to protect your transactions.</p>
     	</article>
     </div>

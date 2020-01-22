@@ -1,4 +1,4 @@
-/*Style rules for etsy site/*
+/*Style rules for etsy site*/
 
 body {
 	width: 960px;
@@ -9,4 +9,65 @@ ul {
 	display: flex;
 	justify-content: center;
 	list-style-type: none;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-bottom-color: gray;
+	padding: 10px;
+}
+
+div {
+	display: flex;
+	justify-content: center;
+}
+
+article img {
+	width: 100%;
+}
+
+#check {
+	font-size: small;
+}
+
+#top {
+	border-top-style: solid;
+	border-top-width: 2px;
+	border-top-color: black;
+}
+
+#left_col {
+	width: 200px;
+	flex: 0 0 200px;
+}
+
+#right_col {
+	width: 250px;
+	flex: 0 0 250px;
+}
+
+#title {
+	text-align: center;
+	box-sizing: border-box;
+	color: rgb(34,34,34);
+	font-size: 32px;
+	font-weight: 300;
+	letter-spacing: 0.5px;
+	line-height: 36px;
+	padding-bottom: 12px;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 30px;
+	text-size-adjust: 100%;
+}
+
+#name {
+	color: rgb(241, 100, 30);
+}
+
+.rose{
+	background-color: rgb(248, 235, 230);
+}
+
+@media(max-width: 900px){
+	div {display: block;}
+	ul {display: none;}
 }
