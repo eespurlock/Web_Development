@@ -1,1 +1,12 @@
+/*Style rules for etsy site/*
 
+body {
+	width: 960px;
+	margin: 24px auto;
+}
+
+ul {
+	display: flex;
+	justify-content: center;
+	list-style-type: none;
+}
