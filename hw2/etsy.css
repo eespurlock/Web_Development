@@ -15,13 +15,13 @@ ul {
 	padding: 10px;
 }
 
-div {
-	display: flex;
-	justify-content: center;
+img {
+	max-width:100%;
+	height: auto;
 }
 
-article img {
-	width: 100%;
+div {
+	display: flex;
 }
 
 #check {
@@ -32,16 +32,6 @@ article img {
 	border-top-style: solid;
 	border-top-width: 2px;
 	border-top-color: black;
-}
-
-#left_col {
-	width: 200px;
-	flex: 0 0 200px;
-}
-
-#right_col {
-	width: 250px;
-	flex: 0 0 250px;
 }
 
 #title {
