@@ -21,8 +21,8 @@ li, .apart{
 }
 
 img {
-	max-width:100%;
-	height: auto;
+	max-width: 100%;
+	max-height: auto;
 }
 
 div {
@@ -118,8 +118,21 @@ div {
 	border-radius: 5px 0px 0px 5px;
 }
 
+.photo{
+	width: auto;
+	height: 100%;
+}
+
+.mobile-visible{
+	display: none;
+}
+
 @media(max-width: 900px){
-	ul {display: none;}
 	#pictures {display: block;}
 	.disappear {display: none;}
+	.mobile-visible:{display: flex;}
+	body {
+		width: 890px;
+		margin: 15px auto;
+	}
 }
