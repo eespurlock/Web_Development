@@ -9,12 +9,17 @@
  	</head>
   <body>
   	<header>
-  		<div id="top">
-	  		<p class="orange lora bold large margin-15">Etsy</p>
+  		<div class="top">
+	  		<p class="orange lora bold large margin-15 left-align">Etsy</p>
 	  		<input placeholder="Search for items or shops" size=100 class="apart raleway small margin-15 gray round-all disappear" id="placeholder">
-	  		<p class="apart small margin 15"><i class="material-icons">search</i></p>
+	  		<p class="apart small margin 15 disappear"><i class="material-icons">search</i></p>
 	  		<p class="apart bold raleway small margin 15">Sign in</p>
 	  		<p class="apart small margin-15"><i class="material-icons">shopping_cart</i></p>
+	  	</div>
+	  	<div class="mobile-visible">
+	  		<p class="apart small margin 15"><i class="material-icons">list</i></p>
+	  		<input placeholder="Search for items or shops" size=100 class="apart raleway small margin-15 gray round-all" id="placeholder">
+	  		<p class="apart small margin 15"><i class="material-icons">search</i></p>
 	  	</div>
   		<nav class="raleway small disappear">
 	  		<ul>
@@ -40,7 +45,14 @@
     		<p class="bold raleway small">Shop Valentine's Day > </p>
     	</article>
     	<article>
-    		<img class="round-right photo" src="etsy2.jpg">
+    		<img class="round-right photo round-top disappear" src="etsy2.jpg">
+    	</article>
+    	<article>
+    		<img class="photo round-top mobile-visible" src="etsy2.jpg">
+    	</article>
+    	<article class="floating rose round-bottom mobile-visible" id="mobile-block">
+    		<p class="lora large">Shower your little ones with love.</p>
+    		<p class="bold raleway small">Shop Valentine's Day > </p>
     	</article>
     	<article class="apart">
     		<img  class="floating round-all" src="etsy3.jpg">
