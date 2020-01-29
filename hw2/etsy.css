@@ -29,11 +29,14 @@ div {
 	display: flex;
 }
 
+.center{
+	justify-content: center;
+}
+
 .top {
 	border-top-style: solid;
 	border-top-width: 2px;
 	border-top-color: black;
-	justify-content: center;
 	padding-top: 10px;
 }
 
@@ -133,16 +136,22 @@ div {
 		display: block;
 		margin-left: 15px;
 	}
-	.photo{
-		margin-left: 15px;
-	}
+	.photo{margin-left: 15px;}
 	.disappear {display: none;}
 	.mobile-visible {display: flex;}
-	.left-align {text-align: left;}
 	.round-bottom {border-radius: 0px 0px 5px 5px;}
 	.round-top {border-radius: 5px 5px 0px 0px;}
 	body {
 		width: 880px;
 		margin: 15px auto;
+	}
+	.left-align{justify-content: left;}
+	.far-right{
+		position: absolute;
+		right: 0px;
+	} 
+	.right{
+		position: absolute;
+		right: 50px;
 	}
 }
