@@ -19,8 +19,7 @@ function heartClick(event)
 		let trItem = document.createElement("tr");
 		let tdItem = document.createElement("td");
 		//we get the station name
-		let newStation = document.createTextNode(event.target.parentNode.nextElementSibling.innerHTML);
-		//let newStation = newStation.replace('&amp;', "&");
+		let newStation = document.createTextNode(event.target.parentNode.nextElementSibling.innerText);
 		//we add the new station to the favorites list
 		tdItem.appendChild(newStation);
 		trItem.appendChild(tdItem);
@@ -30,13 +29,13 @@ function heartClick(event)
 		//we change the heart value
 		event.target.innerHTML = "&#9825;";
 		//we get the station name
-		let toRemove = event.target.parentNode.nextElementSibling.innerHTML;
+		let toRemove = event.target.parentNode.nextElementSibling.innerText;
 		//we get a list of all children in the list of favorites
 		favorites = list.children;
 		//we loop through all of the children
 		for (fave of favorites) {
 				//we remove the child that has the old favorite station
-				let current = fave.firstChild.innerHTML;
+				let current = fave.firstChild.innerText;
 				if(current == toRemove){
 					list.removeChild(fave);
 				}
