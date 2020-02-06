@@ -13,7 +13,9 @@ function heartClick(event)
 	//we need to keep track of the "favorites" list
 	const list = document.querySelector("#favorites");
 	
-	//If you are wondering why I copy-pasted the actual hearts in here, it is because I couldn't get my code to work otherwise
+	/*If you are wondering why I copy-pasted the actual hearts in here, it is because I couldn't get my code to work.
+	 * After completing the assignment, I believe I could have changed this, but I like that my js file has hearts in it.
+	 */
 	if (heart == '♡') {
 		//we change the heart value
 		event.target.innerHTML = "&#9829;";
@@ -51,7 +53,7 @@ function filterStations(event)
 	//we get the value of the event
 	let option = event.target.value;
 	//we create the variable "filter" based on the value of the event
-	/*you may notice that in my html file, I gave all my objects classes that are equal to this, 
+	/*You may notice that in my html file, I gave all my objects classes that are equal to this, 
 	 * however, I could not figure out how to get the class name from the selected object.
 	 * I would love it if you could direct me to this information if you have time.
 	 */
