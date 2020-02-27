@@ -3,13 +3,14 @@ class Asteroid extends React.Component {
 	constructor(props){
 		super(props);
 		this.state ={
-				list_of_asteroids: null,
+				potentially_dangerous_asteroids: null,
+				non_dangerous_asteroids: null,
 				this_picture: `https://apod.nasa.gov/apod/image/2002/MoonHalo_Mckean_5612.jpg`
 					};
 	}
 		
 	render() { 
-		if(!this.props.list_of_asteroids){
+		if(!this.props.potentially_dangerous_asteroids){
 		return (
 			React.createElement("div", {"className": "main"},
 				React.createElement("button", {"onClick": this.handleRefresh}, "Asteroids"),
@@ -17,18 +18,36 @@ class Asteroid extends React.Component {
 			}
 		
 			//yes, I know this code is copy/pasted, but I've had some difficulty with this assignment
-			
-		const asteroids = this.state.list_of_asteroids.map((a) => {
-			return (React.createElement("div", {"id": a.id},
-				React.createElement("h5", {"className": "name"}, a.name)))})
+		
+		const dangerous_ast = handleMapping(this.state.potentially_dangerous_asteroids);
+		const non_dangerous_ast =  handleMapping(this.state.non_dangerous_asteroids);
 		
 		return (
 				React.createElement("div", {"className": "main"},
 					React.createElement("button", {"onClick": this.handleRefresh}, "Asteroids"),
-					React.createElement("img", {"src": this.props.this_picture}),
-					React.createElement("div", {"className": "asteroids"}, this.props.list_of_asteroids),
-					React.createElement("div", {"className": "asteroids"}, asteroids)))
+					React.createElement("img", {"src": this.state.this_picture}),
+					React.createElement("div", {"className": "asteroids"}, 
+							React.createElement("h5", {"className": "potentially_dangerous"}, "Potentially Dangerous Asteroids"),
+							dangerous_ast),
+					React.createElement("div", {"className": "asteroids"}, 
+							React.createElement("h5", {"className": "not_potentially_dangerous"}, "Not Potentially Dangerous Asteroids"),
+							non_dangerous_ast)
+					)
+				)//end return
 	 }
+	
+	handleMapping = (lst) => {
+		return (lst.map((a) => {
+			return(React.createElement("div", {"id": a.id},
+					React.createElement("h5", {"className": "name"}, a.name),
+					React.createElement("p", {"className": "min_diameter"}, a.Estimated_diameter.feet.estimated_diameter_min),
+					React.createElement("p", {"className": "max_diameter"}, a.Estimated_diameter.feet.estimated_diameter_max),
+					React.createElement("p", {"className": "hazardous"}, a.Is_potentially_hazardous_asteroid),
+					React.createElement("p", {"className": "approach_date"}, a.Close_approach_data[0].close_approach_date),
+					React.createElement("p", {"className": "velocity"}, a.Close_approach_data[0].Relative_velocity.Miles_per_hour),
+					React.createElement("p", {"className": "orbiting"}, a.Close_approach_data[0].orbiting_body),
+					React.createElement("p", {"className": "sentry"}, a.is_sentry_object)))}))
+	}
 	
 	handleRefresh = (e) =>{		 
 		 
@@ -52,15 +71,26 @@ class Asteroid extends React.Component {
 			this.setState({ this_picture: data.hdurl })
 		 });
 		 
+		 var dangerous = []
+		 var not_dangerous = []
+		 var ast_lst = []
 		 
 		 fetch(asteroids_url).then((asteroids) => asteroids.json()).then((data) => {
 			console.log(data.near_earth_objects)
 			const near_earth = data.near_earth_objects;
-			var ast_lst = []
-			for (var key in near_earth){ast_lst = ast_lst + near_earth[key];}
-			this.setState({list_of_asteroids: ast_lst});
-		 });
-		 
+			for (var key in near_earth){
+				let ast_lst = near_earth[key];
+				for (var a of ast_lst){
+					//check to see if "is_potentially_hazardous_asteroid" is true
+					if (a.is_potentially_hazardous_asteroid){dangerous.push(a);}
+					else{not_dangerous.push(a)}
+				}} //end the two for loops
+		 	}); //end the 2nd.then
+		 this.state.potentially_dangerous_asteroids = dangerous;
+		 this.state.non_dangerous_asteroids = not_dangerous;
+		 //this.setState({potentially_dangerous_asteroids: dangerous, non_dangerous_asteroids: not_dangerous})
+		 console.log(this.state.potentially_dangerous_asteroids)
+		 console.log(this.state.non_dangerous_asteroids)
 	 }
 	
 	urlForAsteroids = (start_date) => {
