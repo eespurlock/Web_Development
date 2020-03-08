@@ -1,0 +1,42 @@
+/*style rules for my sock buying website*/
+
+body {padding-right: 1em;
+      cursor: pointer;}
+
+body{font-family: Arial;
+	width: 960px;
+	display: block;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;}
+
+div{margin-top: 20px;
+	margin-bottom: 20px;}
+
+h2{border-bottom-style: solid;
+	border-bottom-width: 3px;
+	border-bottom-color: gray;
+	margin-top:20px;
+	margin-bottom: 20px;}
+
+h5{border-bottom-style: dashed;
+	border-bottom-width: 3px;
+	border-bottom-color: gray;
+	border-top-style: dashed;
+	border-top-width: 3px;
+	border-top-color: gray}
+
+button, input {border-radius: 5px;
+		margin-top:20px;
+		margin-bottom: 20px;}
+
+ul {
+	display: flex;
+	list-style-type: none;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	justify-content: center;
+}
+
+@media(max-width: 900px){}
