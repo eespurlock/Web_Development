@@ -29,7 +29,11 @@ h5{border-bottom-style: dashed;
 
 button, input {border-radius: 5px;
 		margin-top:20px;
-		margin-bottom: 20px;}
+		margin-bottom: 20px;
+		margin-right: 20px;
+		padding: 12px;
+		width: 75%;
+		height: 75%;}
 
 ul {
 	display: flex;
@@ -37,6 +41,21 @@ ul {
 	border-bottom-style: solid;
 	border-bottom-width: 2px;
 	justify-content: center;
+	text-align: center;
 }
 
-@media(max-width: 900px){}
+li{
+	margin: 5px;
+	width: 100%;
+}
+
+@media(max-width: 900px){
+	body{
+		width: 800px;
+	}
+}
+
+@media(max-width: 600px){
+	body{
+		width: 500px;
+	}
