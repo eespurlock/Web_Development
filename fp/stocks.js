@@ -29,17 +29,20 @@ class stocks extends React.Component{
 	}
 	
 	stockPortfolio () {
+		console.log("We are about to attempt sorting the list")
+		const sorted_lst = this.sort_lst()
+		console.log(sorted_lst)
 		var return_lst = []
-		return_lst.push( React.createElement("ul", {"id": sym},
+		return_lst.push( React.createElement("ul", {"id": "portfolio"},
 				React.createElement("li", {"className": "symbol"}, React.createElement("button", {"className": "symbol", "onClick": this.sort}, "Symbol")),
 				React.createElement("li", {"className": "number_bought"}, React.createElement("button", {"className": "number_bought", "onClick": this.sort}, "Number Owned")),
-				React.createElement("li", {"className": "total_worth"}, React.createElement("button", {"className": "total_worth", "onClick": this.sort}, "Total Worth")),
-				React.createElement("li", {"className": "individual_worth"}, React.createElement("button", {"className": "individual_worth", "onClick": this.sort}, "Individual Worth")),
-				React.createElement("li", {"className": "last_update"}, React.createElement("button", {"className": "last_update", "onClick": this.sort}, "Last Price Update"))
+				React.createElement("li", {"className": "total_worth"}, React.createElement("button", {"className": "worth", "onClick": this.sort}, "Total Worth")),
+				React.createElement("li", {"className": "individual_worth"}, React.createElement("button", {"className": "latestPrice", "onClick": this.sort}, "Individual Worth")),
+				React.createElement("li", {"className": "last_update"}, React.createElement("button", {"className": "latestTime", "onClick": this.sort}, "Last Price Update"))
 			))
-		for (var sym in this.state.my_stocks){
-			var stock_dict = this.state.my_stocks[sym]
-			return_lst.push( React.createElement("ul", {"id": sym},
+		for (var stock_dict of sorted_lst){
+			//var stock_dict = this.state.my_stocks[sym]
+			return_lst.push( React.createElement("ul", {"id": stock_dict.symbol},
 					React.createElement("li", {"className": "symbol"}, React.createElement("p", {"className": "symbol"}, stock_dict.symbol)),
 					React.createElement("li", {"className": "number_bought"}, React.createElement("p", {"className": "number_bought"}, stock_dict.number_bought)),
 					React.createElement("li", {"className": "total_worth"}, React.createElement("p", {"className": "total_worth"}, "$", stock_dict.worth)),
@@ -50,14 +53,38 @@ class stocks extends React.Component{
 		return (return_lst);
 	}
 	
+	sort_lst () {
+		console.log(this.state)
+		var stocks_lst = []
+		var sort_key = this.state.sort_by
+		for (var sym in this.state.my_stocks){
+			stocks_lst.push(this.state.my_stocks[sym])
+		}
+		var asc = this.state.ascending
+		return (stocks_lst.sort(function(a, b){
+			var first = a
+			var second = b
+			if (asc) {
+				first = b
+				second = a
+			}
+			if (first[sort_key] < second[sort_key]){return -1}
+			else{return 1}
+		}))
+	}
+	
 	sort = (event) =>{
 		event.preventDefault()
-		const class_name = event.target.className
-		var ascending_now = true
-		if (class_name == this.state.sort_by){
-			if (this.state.ascending){ascending_now = false}
+		const class_name = event.target.className;
+		console.log(class_name)
+		var ascending_now = true;
+		if (class_name === this.state.sort_by){
+			console.log("The button is equal to the sorted list already")
+			if (this.state.ascending){ascending_now = false;}
 		}
-		this.setState({sort_by : class_name, ascending: ascending_now})
+		console.log(ascending_now)
+		this.setState({sort_by : class_name});
+		this.setState({ascending : ascending_now});
 
 	}
 	
@@ -71,8 +98,8 @@ class stocks extends React.Component{
 		const stock_url = this.findStockURL(sym);
 		fetch(stock_url).then((stock) => stock.json().then((data) => {
 			if (data.hasOwnProperty("symbol")){
-				if (this.state.my_stocks.hasOwnProperty(sym)){
-					num = this.state.my_stocks[sym].number_bought + num				
+				if (this.state.my_stocks.hasOwnProperty(data.symbol)){
+					num = this.state.my_stocks[data.symbol].number_bought + num				
 				}
 				var set_state = this.state.my_stocks
 				var current_stock = data
@@ -81,7 +108,7 @@ class stocks extends React.Component{
 				}
 				current_stock.number_bought = num
 				current_stock.worth = num * current_stock.latestPrice
-				set_state[sym] = current_stock
+				set_state[data.symbol] = current_stock
 				this.setState({my_stocks: set_state})
 			}
 		}))

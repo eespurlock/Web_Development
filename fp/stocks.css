@@ -9,7 +9,9 @@ body{font-family: Arial;
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 5px;
-	margin-bottom: 5px;}
+	margin-bottom: 5px;
+	justify-content: center;
+	text-align: center;}
 
 div{margin-top: 20px;
 	margin-bottom: 20px;}
