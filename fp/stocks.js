@@ -4,9 +4,11 @@
 class stocks extends React.Component{
 	
 	constructor (props) {
+		localStorage.setItem("dummy", 0)
+		console.log("Just set")
 		super(props);
 		this.state = {
-			my_stocks: {"AAPL": {"number_bought": 10}, "MSFT": {"number_bought": 1}},
+			my_stocks: JSON.parse(localStorage.getItem("my_stocks")) || {},
 			sort_by : "symbol",
 			ascending: true
 		};
@@ -21,17 +23,16 @@ class stocks extends React.Component{
 						React.createElement("input", {"className": "buyStocks", "id": "num","type": "text", "placeholder": "Number to Buy"}),
 						React.createElement('button', {"clasName": "buyStocks", "onClick": this.submitStocks}, "Buy Stocks!")
 						),
+					React.createElement("button", {"className": "buyStocks", "onClick": this.clearStocks}, "Clear Your Portfolio"),
 					React.createElement("div",{"className": "portfolio"},
-							React.createElement("h2", {"className": "portfolio"}),
+							React.createElement("h2", {"className": "portfolio"}, "Your Portfolio"),
 							portfolio))
 				)
 		
 	}
 	
 	stockPortfolio () {
-		console.log("We are about to attempt sorting the list")
 		const sorted_lst = this.sort_lst()
-		console.log(sorted_lst)
 		var return_lst = []
 		return_lst.push( React.createElement("ul", {"id": "portfolio"},
 				React.createElement("li", {"className": "symbol"}, React.createElement("button", {"className": "symbol", "onClick": this.sort}, "Symbol")),
@@ -54,7 +55,6 @@ class stocks extends React.Component{
 	}
 	
 	sort_lst () {
-		console.log(this.state)
 		var stocks_lst = []
 		var sort_key = this.state.sort_by
 		for (var sym in this.state.my_stocks){
@@ -76,13 +76,10 @@ class stocks extends React.Component{
 	sort = (event) =>{
 		event.preventDefault()
 		const class_name = event.target.className;
-		console.log(class_name)
 		var ascending_now = true;
 		if (class_name === this.state.sort_by){
-			console.log("The button is equal to the sorted list already")
 			if (this.state.ascending){ascending_now = false;}
 		}
-		console.log(ascending_now)
 		this.setState({sort_by : class_name});
 		this.setState({ascending : ascending_now});
 
@@ -110,6 +107,8 @@ class stocks extends React.Component{
 				current_stock.worth = num * current_stock.latestPrice
 				set_state[data.symbol] = current_stock
 				this.setState({my_stocks: set_state})
+				localStorage.setItem("my_stocks", JSON.stringify(set_state));
+				console.log(localStorage.getItem("my_stocks"))
 			}
 		}))
 	}
@@ -128,6 +127,12 @@ class stocks extends React.Component{
 		var num = document.querySelector('#num').value;
 		num = parseInt(num)
 		this.buyStocks(sym, num);
+	}
+	
+	clearStocks = (event) => {
+		event.preventDefault();
+		this.setState({my_stocks: {}});
+		localStorage.clear();
 	}
 
 }
