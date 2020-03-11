@@ -1,11 +1,13 @@
 Before I tell you about my final project, I would like to thank you for an amazing quarter!
 I really learned a lot and I LOVED your class!
 
-Files included:
+Relevant Files Included:
 
 index.html: the html file that you will need to open to run my program
 stocks.css: the css file with all of the styling elements
 stocks.js: my js React code
+
+(there are other files included that you can ignore)
 
 In case my design is not clear, here is how my web page is set up:
 
@@ -27,3 +29,6 @@ Your stocks are displayed in the Your Portfolio section
 
 The column headers are all buttons. Pressing on one of the buttons will sort the list by that column.
 You can toggle between ascending and descending order by pressing the same button multiple times
+
+Error notes: When I run this and look at the console, I always see a bunch of errors pop up, but the output is always what I want,
+so I have been ignoring them. If they are something I should have focused on more, please let me know.
